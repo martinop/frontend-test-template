@@ -1,7 +1,9 @@
-export default async function Home() {
+import TopSellersHeader from "@/components/organisms/top-sellers-header";
+
+export default function Home() {
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24 font-bold text-4xl text-blue-600'>
-      Hello, world!
+    <main className="container mx-auto px-4">
+      <TopSellersHeader />
     </main>
-  )
+  );
 }

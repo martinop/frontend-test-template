@@ -14,3 +14,8 @@ jest.mock("next/link", () => ({
     return <a {...props}>{children}</a>;
   },
 }));
+
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+  useSearchParams: jest.fn(),
+}));
