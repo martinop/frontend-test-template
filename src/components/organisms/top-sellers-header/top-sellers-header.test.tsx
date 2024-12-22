@@ -7,12 +7,6 @@ jest.mock("@/components/molecules/genre-select", () => {
   };
 });
 
-jest.mock("@/contexts/genre-context", () => ({
-  GenreProvider: ({ children }: { children: React.ReactNode }) => (
-    <div data-testid="genre-provider">{children}</div>
-  ),
-}));
-
 describe("TopSellersHeader", () => {
   it("renders the header text correctly", () => {
     render(<TopSellersHeader />);
@@ -25,14 +19,6 @@ describe("TopSellersHeader", () => {
     render(<TopSellersHeader />);
     const genreSelect = screen.getByTestId("genre-select");
     expect(genreSelect).toBeInTheDocument();
-  });
-
-  it("wraps content in GenreProvider", () => {
-    render(<TopSellersHeader />);
-    const genreProvider = screen.getByTestId("genre-provider");
-    expect(genreProvider).toBeInTheDocument();
-    expect(genreProvider).toContainElement(screen.getByText("Top Sellers"));
-    expect(genreProvider).toContainElement(screen.getByTestId("genre-select"));
   });
 
   it("has the correct layout classes", () => {
