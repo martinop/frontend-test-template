@@ -1,9 +1,21 @@
-import TopSellersHeader from "@/components/organisms/top-sellers-header";
+import CatalogContent from "@/components/pages/catalog-content/catalog-content";
+import { Suspense } from "react";
 
-export default function Home() {
+type PageProps = {
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default function CatalogPage({ searchParams }: PageProps) {
+  const contentKey = `${searchParams.genre || ""}-${searchParams.page || "1"}`;
+
+  if (!searchParams.genre && !searchParams.page)
+    return <CatalogContent searchParams={searchParams} />;
+
   return (
-    <main className="container mx-auto px-4">
-      <TopSellersHeader />
+    <main>
+      <Suspense key={contentKey} fallback={<span>Loading...</span>}>
+        <CatalogContent searchParams={searchParams} />
+      </Suspense>
     </main>
   );
 }
