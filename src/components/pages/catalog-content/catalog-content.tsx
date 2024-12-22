@@ -17,15 +17,17 @@ export default async function CatalogContent({
   );
 
   return (
-    <GenreProvider genres={availableFilters}>
+    <>
       <div className="border-b border-stroke-tertiar">
         <div className="mx-auto container px-4">
-          <TopSellersHeader />
+          <GenreProvider genres={availableFilters}>
+            <TopSellersHeader />
+          </GenreProvider>
         </div>
       </div>
       <div className="py-12 container mx-auto px-4">
         <GameGrid games={games} />
       </div>
-    </GenreProvider>
+    </>
   );
 }
