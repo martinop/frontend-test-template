@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Game } from "@/types";
-import AddToCart from "@/components/atoms/add-to-cart";
+import AddToCart from "@/components/atoms/add-to-cart-btn";
 
 interface GameCardProps {
   game: Game;

@@ -23,7 +23,7 @@ export default function AddToCart({ game }: AddToCartProps) {
 
   return (
     <Button
-      variant={isInCart ? "secondary" : "primary"}
+      variant={isInCart ? "primary" : "secondary"}
       onClick={handleToggleCart}
     >
       {isInCart ? "Remove" : "Add to Cart"}

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import AddToCart from "./add-to-cart";
+import AddToCart from "./add-to-cart-btn";
 import { useCart } from "@/contexts/cart-context";
 import { Game } from "@/types";
 
@@ -45,7 +45,7 @@ describe("AddToCart", () => {
 
     const button = screen.getByRole("button", { name: /add to cart/i });
     expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute("variant", "primary");
+    expect(button).toHaveAttribute("variant", "secondary");
   });
 
   it('renders "Remove" button when game is in cart', () => {
@@ -59,7 +59,7 @@ describe("AddToCart", () => {
 
     const button = screen.getByRole("button", { name: /remove/i });
     expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute("variant", "secondary");
+    expect(button).toHaveAttribute("variant", "primary");
   });
 
   it('calls addItem when "Add to Cart" is clicked', () => {

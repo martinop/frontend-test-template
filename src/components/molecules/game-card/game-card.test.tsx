@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import GameCard from "./game-card";
 import { Game } from "@/types";
 
-jest.mock("@/components/atoms/add-to-cart", () => {
+jest.mock("@/components/atoms/add-to-cart-btn", () => {
   return function MockAddToCart() {
     return <button data-testid="add-to-cart">Add to Cart</button>;
   };
