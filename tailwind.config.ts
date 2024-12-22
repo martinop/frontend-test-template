@@ -15,10 +15,14 @@ const config: Config = {
         "neutral-500": "#737373",
         "neutral-700": "#404040",
         "gray-medium": "#3B3B3B",
+        "stone-100": "#F5F5F4",
         // Duplicated (?
         primary: "#3B3B3B",
         "stroke-secondary": "#3B3B3B",
         "item-fill": "#3B3B3B",
+        "cta-content-item": "#3B3B3B",
+        "cta-content-secondary": "#3B3B3B",
+        "cta-stroke-primary": "#3B3B3B",
         // End of duplicated by Figma
         "stroke-tertiary": "#EFEDF3",
         "stroke-alternative": "#8F8F8F",
