@@ -7,7 +7,7 @@ interface GameCardProps {
 
 export default function GameCard({ game }: GameCardProps) {
   return (
-    <div className="p-6 border border-stroke-alternative bg-surface-primary rounded-2xl">
+    <div className="p-6 border-[0.5px] border-stroke-alternative bg-surface-primary rounded-2xl">
       <div className="relative h-60">
         <Image
           src={game.image}

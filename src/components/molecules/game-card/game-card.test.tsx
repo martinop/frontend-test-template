@@ -32,7 +32,7 @@ describe("GameCard", () => {
 
     const container = screen.getByText(mockGame.name).closest(".p-6");
     expect(container).toHaveClass(
-      "p-6 border border-stroke-alternative bg-surface-primary rounded-2xl"
+      "p-6 border-[0.5px] border-stroke-alternative bg-surface-primary rounded-2xl"
     );
 
     const imageContainer = screen.getByRole("img").parentElement;
