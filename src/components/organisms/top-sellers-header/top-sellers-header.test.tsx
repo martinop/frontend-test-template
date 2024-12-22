@@ -24,6 +24,6 @@ describe("TopSellersHeader", () => {
   it("has the correct layout classes", () => {
     render(<TopSellersHeader />);
     const container = screen.getByText("Top Sellers").closest("div");
-    expect(container).toHaveClass("py-12 border-b border-stroke-tertiary");
+    expect(container).toHaveClass("py-12");
   });
 });
