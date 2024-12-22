@@ -12,6 +12,7 @@
     "test:coverage": "jest --coverage --coverageReporters='text-summary' --coverageReporters='text' --coverageReporters='html'"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "next": "14.2.4",
     "react": "18.3.1",
     "react-dom": "18.3.1"

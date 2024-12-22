@@ -20,6 +20,7 @@ const config: Config = {
         primary: "#3B3B3B",
         "stroke-secondary": "#3B3B3B",
         "item-fill": "#3B3B3B",
+        "cta-fill-primary": "#585660",
         "cta-content-item": "#3B3B3B",
         "cta-content-secondary": "#3B3B3B",
         "cta-stroke-primary": "#3B3B3B",

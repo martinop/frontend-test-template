@@ -7,7 +7,7 @@ describe("Button", () => {
     const button = screen.getByRole("button", { name: /click me/i });
     expect(button).toBeInTheDocument();
     expect(button).toHaveClass(
-      "bg-neutral-700 text-white hover:bg-neutral-600"
+      "rounded-lg px-6 py-4 text-center font-bold transition-all duration-300 ease-in-out leading-tight tracking-[0.5px] border border-transparent bg-cta-fill-primary text-white hover:opacity-50 w-full"
     );
   });
 
@@ -15,7 +15,7 @@ describe("Button", () => {
     render(<Button variant="primary">Primary</Button>);
     const button = screen.getByRole("button", { name: /primary/i });
     expect(button).toHaveClass(
-      "border border-transparent bg-neutral-700 text-white hover:bg-neutral-600"
+      "rounded-lg px-6 py-4 text-center font-bold transition-all duration-300 ease-in-out leading-tight tracking-[0.5px] border border-transparent bg-cta-fill-primary text-white hover:opacity-50 w-full"
     );
   });
 
@@ -23,7 +23,7 @@ describe("Button", () => {
     render(<Button variant="secondary">Secondary</Button>);
     const button = screen.getByRole("button", { name: /secondary/i });
     expect(button).toHaveClass(
-      "border border-cta-stroke-primary text-cta-content-secondary hover:bg-cta-content-secondary hover:text-white"
+      "rounded-lg px-6 py-4 text-center font-bold transition-all duration-300 ease-in-out leading-tight tracking-[0.5px] border border-cta-stroke-primary text-cta-content-secondary hover:bg-cta-fill-primary hover:text-white w-full"
     );
   });
 
@@ -31,7 +31,7 @@ describe("Button", () => {
     render(<Button>Test</Button>);
     const button = screen.getByRole("button", { name: /test/i });
     expect(button).toHaveClass(
-      "w-full rounded-lg px-6 py-4 text-center font-bold transition-all duration-300 ease-in-out leading-tight tracking-[0.5px]"
+      "rounded-lg px-6 py-4 text-center font-bold transition-all duration-300 ease-in-out leading-tight tracking-[0.5px]"
     );
   });
 
@@ -59,5 +59,17 @@ describe("Button", () => {
     );
     const button = screen.getByRole("button");
     expect(button).toHaveTextContent("Complex children");
+  });
+
+  it("applies full width when fullWidth prop is true", () => {
+    render(<Button fullWidth>Full Width</Button>);
+    const button = screen.getByRole("button", { name: /full width/i });
+    expect(button).toHaveClass("w-full");
+  });
+
+  it("does not apply full width when fullWidth prop is false", () => {
+    render(<Button fullWidth={false}>Not Full Width</Button>);
+    const button = screen.getByRole("button", { name: /not full width/i });
+    expect(button).not.toHaveClass("w-full");
   });
 });
