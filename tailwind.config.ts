@@ -12,6 +12,12 @@ const config: Config = {
         "surface-secondary": "#EEEEEE",
         "neutral-dark": "#585660",
         "neutral-700": "#404040",
+        "gray-medium": "#3B3B3B",
+        // Duplicated (?
+        primary: "#3B3B3B",
+        "stroke-secondary": "#3B3B3B",
+        // End of duplicated by Figma
+        "stroke-tertiary": "#EFEDF3",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
