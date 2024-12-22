@@ -20,8 +20,6 @@ export default function GenreSelect() {
     router.push(`/?${params.toString()}`);
   };
 
-  console.log({ genres });
-
   return (
     <div className="flex items-center">
       <span className="text-xl text-gray-medium font-bold pr-6 border-r border-stroke-secondary mr-6">
