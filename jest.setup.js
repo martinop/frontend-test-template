@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 jest.mock("next/image", () => ({
   __esModule: true,
   default: (props) => {
-    const { priority, loading, unoptimized, ...rest } = props;
+    const { priority, loading, unoptimized, objectFit, fill, ...rest } = props;
     return <img {...rest} />;
   },
 }));
