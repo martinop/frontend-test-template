@@ -14,7 +14,8 @@ export default function Button({
     "w-full rounded-lg px-6 py-4 text-center font-bold transition-all duration-300 ease-in-out leading-tight tracking-[0.5px]";
 
   const variantStyles = {
-    primary: "bg-neutral-700 text-white hover:bg-neutral-600",
+    primary:
+      "border border-transparent bg-neutral-700 text-white hover:bg-neutral-600",
     secondary:
       "border border-cta-stroke-primary text-cta-content-secondary hover:bg-cta-content-secondary hover:text-white",
   };
