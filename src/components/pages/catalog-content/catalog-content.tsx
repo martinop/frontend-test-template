@@ -26,7 +26,7 @@ export default async function CatalogContent({
           </GenreProvider>
         </div>
       </div>
-      <div className="py-8 md:py-12 container mx-auto px-6 md:px-4 flex flex-col items-start">
+      <div className="py-8 md:py-12 container mx-auto px-6 md:px-4 flex flex-col items-start animate-fadeIn">
         <GameGrid games={games} />
         {currentPage < totalPages && (
           <SeeMoreBtn className="w-full md:w-auto mt-6 md:mt-12" />

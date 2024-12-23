@@ -5,7 +5,7 @@ import OrderSummary from "@/components/organisms/order-summary";
 
 export default function CartContent() {
   return (
-    <div className="container mx-auto px-6 md:px-4">
+    <div className="container mx-auto px-6 md:px-4 animate-fadeIn">
       <CartHeader />
       <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 md:gap-20 mb-12">
         <CartItemsList className="lg:col-span-3" />
