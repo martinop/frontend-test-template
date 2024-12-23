@@ -30,12 +30,12 @@ export default function CatalogSkeleton() {
       >
         {[...Array(6)].map((_, index) => (
           <div
-            className="rounded-2xl border p-4 space-y-4"
+            className="rounded-2xl border p-6 space-y-4"
             key={index}
             aria-label={`card skeleton ${index + 1}`}
           >
             <SkeletonElement
-              className="w-full aspect-video rounded-2xl"
+              className="w-full aspect-video rounded-2xl mb-6"
               aria-label={`image for card skeleton ${index + 1}`}
             />
             <SkeletonElement
