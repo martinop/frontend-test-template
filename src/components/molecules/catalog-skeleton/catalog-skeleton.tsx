@@ -7,9 +7,9 @@ export default function CatalogSkeleton() {
       role="main"
       aria-label="catalog skeleton"
     >
-      <div className="mt-8 md:mt-12 mb-16">
+      <div className="mt-8 md:mt-12 mb-16 md:mb-24">
         <SkeletonElement
-          className="mb-12 h-8 w-48"
+          className="mb-16 h-8 md:h-10 w-48"
           aria-label="header skeleton"
         />
         <div className="flex justify-start md:justify-end gap-6">
