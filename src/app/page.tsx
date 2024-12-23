@@ -1,3 +1,4 @@
+import CatalogSkeleton from "@/components/molecules/catalog-skeleton";
 import CatalogContent from "@/components/pages/catalog-content";
 import { Suspense } from "react";
 
@@ -13,7 +14,7 @@ export default function CatalogPage({ searchParams }: PageProps) {
 
   return (
     <main>
-      <Suspense key={contentKey} fallback={<span>Loading...</span>}>
+      <Suspense key={contentKey} fallback={<CatalogSkeleton />}>
         <CatalogContent searchParams={searchParams} />
       </Suspense>
     </main>
