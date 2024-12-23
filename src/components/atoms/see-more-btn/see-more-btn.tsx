@@ -15,7 +15,7 @@ export default function SeeMoreBtn({ className }: SeeMoreBtnProps) {
   const handleLoadMore = () => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("page", String(currentPage + 1));
-    router.push(`/?${params.toString()}`);
+    router.push(`/?${params.toString()}`, { scroll: false });
   };
 
   return (

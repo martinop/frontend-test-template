@@ -3,7 +3,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import SeeMoreBtn from "./see-more-btn";
 
 const mockPush = jest.fn();
-
 (useRouter as jest.Mock).mockReturnValue({
   push: mockPush,
 });
@@ -18,7 +17,7 @@ describe("SeeMoreBtn", () => {
     expect(button).toHaveClass(mockClassName);
   });
 
-  it("increments page parameter when clicked", () => {
+  it("increments page parameter when clicked with scroll disabled", () => {
     (useSearchParams as jest.Mock).mockReturnValue({
       get: () => "1",
       toString: () => "page=1",
@@ -27,10 +26,10 @@ describe("SeeMoreBtn", () => {
     render(<SeeMoreBtn className={mockClassName} />);
     fireEvent.click(screen.getByText("See More"));
 
-    expect(mockPush).toHaveBeenCalledWith("/?page=2");
+    expect(mockPush).toHaveBeenCalledWith("/?page=2", { scroll: false });
   });
 
-  it("preserves existing query parameters when updating page", () => {
+  it("preserves existing query parameters when updating page with scroll disabled", () => {
     (useSearchParams as jest.Mock).mockReturnValue({
       get: () => "1",
       toString: () => "page=1&genre=action",
@@ -39,10 +38,8 @@ describe("SeeMoreBtn", () => {
     render(<SeeMoreBtn className={mockClassName} />);
     fireEvent.click(screen.getByText("See More"));
 
-    expect(mockPush).toHaveBeenCalledWith("/?page=2&genre=action");
-  });
-
-  afterEach(() => {
-    jest.clearAllMocks();
+    expect(mockPush).toHaveBeenCalledWith("/?page=2&genre=action", {
+      scroll: false,
+    });
   });
 });
