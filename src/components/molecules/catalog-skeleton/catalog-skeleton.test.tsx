@@ -6,7 +6,9 @@ describe("CatalogSkeleton Component", () => {
     render(<CatalogSkeleton />);
     const container = screen.getByRole("main", { name: "catalog skeleton" });
     expect(container).toBeInTheDocument();
-    expect(container).toHaveClass("w-full container mx-auto px-4 pb-24");
+    expect(container).toHaveClass(
+      "w-full container mx-auto px-6 md:px-4 pb-24"
+    );
   });
 
   it("renders header skeleton elements", () => {

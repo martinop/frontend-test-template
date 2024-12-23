@@ -18,8 +18,8 @@ describe("CartItem", () => {
   it("calls onRemove with correct game id when remove button is clicked", () => {
     render(<CartItem game={mockGame} onRemove={mockOnRemove} />);
 
-    const removeButton = screen.getByRole("button");
-    fireEvent.click(removeButton);
+    const removeButtons = screen.getAllByLabelText(/remove game/i);
+    fireEvent.click(removeButtons[0]);
 
     expect(mockOnRemove).toHaveBeenCalledWith(mockGame.id);
   });

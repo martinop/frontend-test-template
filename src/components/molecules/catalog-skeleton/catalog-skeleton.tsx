@@ -3,18 +3,18 @@ import SkeletonElement from "@/components/atoms/skeleton-element";
 export default function CatalogSkeleton() {
   return (
     <div
-      className="w-full container mx-auto px-4 pb-24"
+      className="w-full container mx-auto px-6 md:px-4 pb-24"
       role="main"
       aria-label="catalog skeleton"
     >
-      <div className="mt-12 mb-28">
+      <div className="mt-8 md:mt-12 mb-16">
         <SkeletonElement
-          className="mb-12 h-10 w-48"
+          className="mb-12 h-8 w-48"
           aria-label="header skeleton"
         />
-        <div className="flex justify-end gap-6">
+        <div className="flex justify-start md:justify-end gap-6">
           <SkeletonElement
-            className="h-10 w-32"
+            className="h-10 w-20 md:w-32"
             aria-label="header skeleton button"
           />
           <SkeletonElement
@@ -25,7 +25,7 @@ export default function CatalogSkeleton() {
       </div>
 
       <div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12"
         aria-label="grid skeleton"
       >
         {[...Array(6)].map((_, index) => (
@@ -35,7 +35,7 @@ export default function CatalogSkeleton() {
             aria-label={`card skeleton ${index + 1}`}
           >
             <SkeletonElement
-              className="w-full aspect-video rounded-2xl mb-6"
+              className="w-full aspect-square md:aspect-video rounded-2xl mb-6"
               aria-label={`image for card skeleton ${index + 1}`}
             />
             <SkeletonElement

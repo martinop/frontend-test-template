@@ -5,13 +5,13 @@ import OrderSummary from "@/components/organisms/order-summary";
 
 export default function CartContent() {
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-6 md:px-4">
       <CartHeader />
-      <div className="grid lg:grid-cols-5 gap-20 mb-12">
-        <CartItemsList className="col-span-3" />
-        <div className="col-span-2">
+      <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 md:gap-20 mb-12">
+        <CartItemsList className="lg:col-span-3" />
+        <div className="lg:col-span-2">
           <OrderSummary />
-          <Button className="mt-8">Checkout</Button>
+          <Button className="mt-10 md:mt-8">Checkout</Button>
         </div>
       </div>
     </div>

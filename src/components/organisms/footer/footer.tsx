@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="w-full bg-neutral-700">
-      <div className="container mx-auto px-4 flex justify-center py-16">
+      <div className="container mx-auto px-6 md:px-4 flex justify-center py-16">
         <Link href="/">
           <Image
             src="/apply-digital-logo.svg"

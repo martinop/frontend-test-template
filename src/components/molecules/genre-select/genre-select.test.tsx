@@ -67,6 +67,8 @@ describe("GenreSelect", () => {
     );
 
     const select = screen.getByRole("combobox");
-    expect(select).toHaveClass("w-[230px] px-4 h-14 text-xl text-primary");
+    expect(select).toHaveClass(
+      "w-auto md:w-[230px] px-4 h-14 text-xl text-primary"
+    );
   });
 });

@@ -29,7 +29,7 @@ export default function GameCard({ game }: GameCardProps) {
             alt={game.name}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="rounded-2xl object-cover"
+            className="rounded-t-2xl md:rounded-2xl object-cover"
             priority
           />
           {game.isNew && <NewBadge />}

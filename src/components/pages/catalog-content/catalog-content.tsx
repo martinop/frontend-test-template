@@ -20,15 +20,17 @@ export default async function CatalogContent({
   return (
     <>
       <div className="border-b border-stroke-tertiar">
-        <div className="mx-auto container px-4">
+        <div className="mx-auto container px-6 md:px-4">
           <GenreProvider genres={availableFilters}>
             <TopSellersHeader />
           </GenreProvider>
         </div>
       </div>
-      <div className="py-12 container mx-auto px-4 flex flex-col items-start">
+      <div className="py-8 md:py-12 container mx-auto px-6 md:px-4 flex flex-col items-start">
         <GameGrid games={games} />
-        {currentPage < totalPages && <SeeMoreBtn className="w-auto mt-12" />}
+        {currentPage < totalPages && (
+          <SeeMoreBtn className="w-full md:w-auto mt-6 md:mt-12" />
+        )}
       </div>
     </>
   );

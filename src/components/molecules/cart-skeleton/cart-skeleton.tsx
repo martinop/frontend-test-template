@@ -2,7 +2,7 @@ import SkeletonElement from "@/components/atoms/skeleton-element";
 
 export default function CartSkeleton() {
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-6 md:px-4 py-16">
       <SkeletonElement className="h-16 w-64 mb-16" />
 
       <div className="grid lg:grid-cols-5 gap-20 mb-12">

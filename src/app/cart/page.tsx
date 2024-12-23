@@ -14,7 +14,7 @@ const CartContent = dynamic(
 export default function CartPage() {
   return (
     <CartProvider>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 md:px-4">
         <BackCatalogBtn />
       </div>
       <CartContent />

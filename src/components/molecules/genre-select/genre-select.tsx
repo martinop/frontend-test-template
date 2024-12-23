@@ -26,7 +26,7 @@ export default function GenreSelect() {
         Genre
       </span>
       <select
-        className="w-[230px] px-4 h-14 text-xl text-primary"
+        className="w-auto md:w-[230px] px-4 h-14 text-xl text-primary"
         onChange={(e) => handleGenreChange(e.target.value)}
         value={currentGenre}
       >

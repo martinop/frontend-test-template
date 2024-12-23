@@ -32,7 +32,7 @@ describe("Footer", () => {
 
     const container = screen.getByRole("contentinfo").firstChild as HTMLElement;
     expect(container).toHaveClass(
-      "container mx-auto px-4 flex justify-center py-16"
+      "container mx-auto px-6 md:px-4 flex justify-center py-16"
     );
   });
 });

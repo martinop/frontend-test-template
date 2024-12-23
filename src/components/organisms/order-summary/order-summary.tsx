@@ -8,8 +8,8 @@ export default function OrderSummary() {
   const { items } = useCart();
 
   return (
-    <div className="bg-surface-primary border-[0.5px] border-stroke-secondary pt-8 pb-[52px] px-6 rounded-lg">
-      <h4 className="font-semibold text-2xl tracking-[0.4px] text-primary leading-none">
+    <div className="bg-surface-primary border-[0.5px] border-stroke-secondary pt-6 md:pt-8 pb-[44px] md:pb-[52px] px-4 md:px-6 rounded-lg">
+      <h4 className="font-semibold text-xl md:text-2xl tracking-[0.4px] text-primary leading-none">
         Order Summary
       </h4>
       <p className="text-primary text-lg mb-8 mt-3">

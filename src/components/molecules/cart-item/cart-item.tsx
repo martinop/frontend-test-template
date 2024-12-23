@@ -15,18 +15,30 @@ interface CartItemProps {
 
 export default function CartItem({ game, className, onRemove }: CartItemProps) {
   return (
-    <div className={cx("flex gap-6 p-5", className)}>
-      <div className="relative aspect-[3/2] w-full max-w-[256px]">
-        <Image
-          src={game.image}
-          alt={game.name}
-          fill
-          sizes="(max-width: 256px) 100vw, 256px"
-          className="object-cover"
-        />
-        {game.isNew && <NewBadge />}
+    <div
+      className={cx("flex flex-col md:flex-row gap-4 md:gap-6 p-5", className)}
+    >
+      <div className="flex items-start gap-3 w-full md:max-w-[256px]">
+        <div className="relative aspect-video md:aspect-[3/2] w-full">
+          <Image
+            src={game.image}
+            alt={game.name}
+            fill
+            sizes="(max-width: 256px) 100vw, 256px"
+            className="object-cover"
+          />
+          {game.isNew && <NewBadge />}
+        </div>
+        <button
+          className="block md:hidden"
+          aria-label="Remove game"
+          onClick={() => onRemove(game.id)}
+        >
+          <CloseIcon />
+        </button>
       </div>
-      <div className="flex-1 flex flex-col justify-between">
+
+      <div className="flex-1 flex flex-col justify-between gap-14 md:gap-0">
         <div>
           <GenreText genre={game.genre} />
           <GameTitle title={game.name} />
@@ -34,11 +46,12 @@ export default function CartItem({ game, className, onRemove }: CartItemProps) {
             {game.description}
           </p>
         </div>
-        <GamePrice price={game.price} className="text-right" />
+        <GamePrice price={game.price} className="text-right leading-none" />
       </div>
       <button
         onClick={() => onRemove(game.id)}
-        className="mt-1.5 flex  self-start"
+        aria-label="Remove game"
+        className="hidden md:flex mt-1.5 self-start"
       >
         <CloseIcon />
       </button>

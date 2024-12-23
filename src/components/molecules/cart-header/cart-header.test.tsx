@@ -44,17 +44,14 @@ describe("CartHeader", () => {
     render(<CartHeader />);
 
     const container = screen.getByRole("heading").parentElement;
-    expect(container).toHaveClass("my-12");
+    expect(container).toHaveClass("py-8 md:py-12");
 
     const heading = screen.getByRole("heading");
     expect(heading).toHaveClass(
-      "text-4xl",
-      "font-bold",
-      "mb-3",
-      "text-neutral-dark"
+      "text-2xl md:text-4xl font-bold mb-3 text-neutral-dark"
     );
 
     const itemCount = screen.getByText("0 items");
-    expect(itemCount).toHaveClass("text-primary", "text-2xl");
+    expect(itemCount).toHaveClass("text-primary text-xl md:text-2xl");
   });
 });

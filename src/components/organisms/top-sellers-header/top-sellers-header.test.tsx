@@ -12,7 +12,9 @@ describe("TopSellersHeader", () => {
     render(<TopSellersHeader />);
     const headerText = screen.getByText("Top Sellers");
     expect(headerText).toBeInTheDocument();
-    expect(headerText).toHaveClass("mb-12 text-gray-medium text-4xl font-bold");
+    expect(headerText).toHaveClass(
+      "mb-8 md:mb-12 text-gray-medium text-2xl md:text-4xl font-bold uppercase md:normal-case"
+    );
   });
 
   it("renders the GenreSelect component", () => {
@@ -24,6 +26,6 @@ describe("TopSellersHeader", () => {
   it("has the correct layout classes", () => {
     render(<TopSellersHeader />);
     const container = screen.getByText("Top Sellers").closest("div");
-    expect(container).toHaveClass("py-12");
+    expect(container).toHaveClass("py-8 md:py-12");
   });
 });
