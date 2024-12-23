@@ -3,9 +3,9 @@
 import {
   createContext,
   useContext,
-  useEffect,
   useState,
   ReactNode,
+  useEffect,
 } from "react";
 import { Game } from "@/types";
 
@@ -19,29 +19,38 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<Game[]>([]);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    const savedCart = localStorage.getItem("cart");
-    if (savedCart) {
-      setItems(JSON.parse(savedCart));
-    }
+    setIsHydrated(true);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(items));
-  }, [items]);
+    if (isHydrated) {
+      const savedCart = localStorage.getItem("cart");
+      if (savedCart) {
+        setItems(JSON.parse(savedCart));
+      }
+    }
+  }, [isHydrated]);
 
   const addItem = (item: Game) => {
     setItems((prevItems) => {
       if (!prevItems.some((i) => i.id === item.id)) {
-        return [...prevItems, item];
+        const newItems = [...prevItems, item];
+        localStorage.setItem("cart", JSON.stringify(newItems));
+        return newItems;
       }
       return prevItems;
     });
   };
 
   const removeItem = (itemId: string) => {
-    setItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+    setItems((prevItems) => {
+      const newItems = prevItems.filter((item) => item.id !== itemId);
+      localStorage.setItem("cart", JSON.stringify(newItems));
+      return newItems;
+    });
   };
 
   return (

@@ -18,50 +18,49 @@ describe("CartProvider and useCart", () => {
   });
 
   it("provides initial empty cart", () => {
-    const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <CartProvider>{children}</CartProvider>
-    );
-    const { result } = renderHook(() => useCart(), { wrapper });
+    const { result } = renderHook(() => useCart(), {
+      wrapper: CartProvider,
+    });
     expect(result.current.items).toEqual([]);
   });
 
-  it("adds item to cart", () => {
-    const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <CartProvider>{children}</CartProvider>
-    );
-    const { result } = renderHook(() => useCart(), { wrapper });
+  it("adds item to cart and updates localStorage", async () => {
+    const { result } = renderHook(() => useCart(), {
+      wrapper: CartProvider,
+    });
 
-    act(() => {
+    await act(async () => {
       result.current.addItem(mockGame);
     });
 
+    // Verificar estado interno
     expect(result.current.items).toEqual([mockGame]);
+    // Verificar localStorage
+    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    expect(savedCart).toEqual([mockGame]);
   });
 
-  it("removes item from cart", () => {
-    const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <CartProvider>{children}</CartProvider>
-    );
-    const { result } = renderHook(() => useCart(), { wrapper });
-
-    act(() => {
-      result.current.addItem(mockGame);
+  it("removes item from cart and updates localStorage", async () => {
+    const { result } = renderHook(() => useCart(), {
+      wrapper: CartProvider,
     });
 
-    act(() => {
+    await act(async () => {
+      result.current.addItem(mockGame);
       result.current.removeItem(mockGame.id);
     });
 
     expect(result.current.items).toEqual([]);
+    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    expect(savedCart).toEqual([]);
   });
 
-  it("does not add duplicate items", () => {
-    const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <CartProvider>{children}</CartProvider>
-    );
-    const { result } = renderHook(() => useCart(), { wrapper });
+  it("does not add duplicate items", async () => {
+    const { result } = renderHook(() => useCart(), {
+      wrapper: CartProvider,
+    });
 
-    act(() => {
+    await act(async () => {
       result.current.addItem(mockGame);
       result.current.addItem(mockGame);
     });
@@ -69,34 +68,19 @@ describe("CartProvider and useCart", () => {
     expect(result.current.items).toEqual([mockGame]);
   });
 
-  it("persists cart to localStorage", () => {
-    const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <CartProvider>{children}</CartProvider>
-    );
-    const { result } = renderHook(() => useCart(), { wrapper });
-
-    act(() => {
-      result.current.addItem(mockGame);
-    });
-
-    expect(JSON.parse(localStorage.getItem("cart") || "[]")).toEqual([
-      mockGame,
-    ]);
-  });
-
-  it("loads cart from localStorage", () => {
+  it("loads cart from localStorage on hydration", () => {
     localStorage.setItem("cart", JSON.stringify([mockGame]));
 
-    const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <CartProvider>{children}</CartProvider>
-    );
-    const { result } = renderHook(() => useCart(), { wrapper });
+    const { result } = renderHook(() => useCart(), {
+      wrapper: CartProvider,
+    });
 
+    // Esperar a que se complete la hidratación
     expect(result.current.items).toEqual([mockGame]);
   });
 
   it("throws error when useCart is used outside of CartProvider", () => {
-    const consoleErrorSpy = jest
+    const consoleSpy = jest
       .spyOn(console, "error")
       .mockImplementation(() => {});
 
@@ -104,6 +88,26 @@ describe("CartProvider and useCart", () => {
       renderHook(() => useCart());
     }).toThrow("useCart must be used within a CartProvider");
 
-    consoleErrorSpy.mockRestore();
+    consoleSpy.mockRestore();
+  });
+
+  it("updates localStorage when items change", async () => {
+    const { result } = renderHook(() => useCart(), {
+      wrapper: CartProvider,
+    });
+
+    await act(async () => {
+      result.current.addItem(mockGame);
+    });
+
+    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    expect(savedCart).toEqual([mockGame]);
+
+    await act(async () => {
+      result.current.removeItem(mockGame.id);
+    });
+
+    const updatedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    expect(updatedCart).toEqual([]);
   });
 });
