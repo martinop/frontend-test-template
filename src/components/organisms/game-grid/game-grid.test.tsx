@@ -60,7 +60,7 @@ describe("GameGrid", () => {
 
     const grid = screen.getByTestId("game-card-1").parentElement;
     expect(grid).toHaveClass(
-      "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12"
+      "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 w-full"
     );
   });
 });
