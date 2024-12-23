@@ -30,7 +30,7 @@ export default function CartItem({ game, className, onRemove }: CartItemProps) {
         <div>
           <GenreText genre={game.genre} />
           <GameTitle title={game.name} />
-          <p className="mt-2 text-sm text-gray-600 max-w-1/2">
+          <p className="mt-2 text-sm text-neutral-500 max-w-1/2">
             {game.description}
           </p>
         </div>
