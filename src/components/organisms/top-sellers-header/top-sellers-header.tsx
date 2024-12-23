@@ -6,7 +6,7 @@ export default function TopSellersHeader() {
       <h5 className="mb-8 md:mb-12 text-gray-medium text-2xl md:text-4xl font-bold uppercase md:normal-case">
         Top Sellers
       </h5>
-      <div className="pl-6 md:pl-0 flex justify-end">
+      <div className="flex justify-between md:justify-end">
         <GenreSelect />
       </div>
     </div>
