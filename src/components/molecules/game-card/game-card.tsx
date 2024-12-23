@@ -1,6 +1,19 @@
 import Image from "next/image";
 import { Game } from "@/types";
-import AddToCart from "@/components/atoms/add-to-cart-btn";
+import dynamic from "next/dynamic";
+import SkeletonElement from "@/components/atoms/skeleton-element";
+import GenreText from "@/components/atoms/genre-text";
+import GameTitle from "@/components/atoms/game-title";
+import GamePrice from "@/components/atoms/game-price";
+import NewBadge from "@/components/atoms/new-badge";
+
+const AddToCart = dynamic(
+  () => import("@/components/atoms/add-to-cart-btn").then((mod) => mod.default),
+  {
+    ssr: false,
+    loading: () => <SkeletonElement className="w-full h-[54px] rounded-lg" />,
+  }
+);
 
 interface GameCardProps {
   game: Game;
@@ -19,19 +32,13 @@ export default function GameCard({ game }: GameCardProps) {
             className="rounded-2xl object-cover"
             priority
           />
-          {game.isNew && (
-            <span className="absolute top-3 left-3 bg-stone-100 text-cta-content-item py-2 px-3 rounded leading-none tracking-[0.4px]">
-              New
-            </span>
-          )}
+          {game.isNew && <NewBadge />}
         </div>
         <div className="mt-5">
-          <p className="text-neutral-500 uppercase font-bold mb-3">
-            {game.genre}
-          </p>
-          <div className="flex justify-between gap-x-12 items-center text-item-fill tracking-[0.4px]">
-            <h3 className="font-bold text-lg leading-tight">{game.name}</h3>
-            <div className="text-xl font-bold">${game.price}</div>
+          <GenreText genre={game.genre} />
+          <div className="flex justify-between gap-x-12 items-center">
+            <GameTitle title={game.name} />
+            <GamePrice price={game.price} />
           </div>
         </div>
       </div>
