@@ -16,8 +16,13 @@ jest.mock("next/link", () => ({
 }));
 
 jest.mock("next/navigation", () => ({
-  useRouter: jest.fn(),
-  useSearchParams: jest.fn(),
+  useRouter: jest.fn(() => ({
+    push: jest.fn(),
+  })),
+  useSearchParams: jest.fn(() => ({
+    get: jest.fn(),
+    toString: jest.fn(),
+  })),
 }));
 
 const localStorageMock = (function () {
