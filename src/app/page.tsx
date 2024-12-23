@@ -1,4 +1,4 @@
-import CatalogContent from "@/components/pages/catalog-content/catalog-content";
+import CatalogContent from "@/components/pages/catalog-content";
 import { Suspense } from "react";
 
 type PageProps = {

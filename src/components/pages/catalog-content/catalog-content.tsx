@@ -28,7 +28,7 @@ export default async function CatalogContent({
       </div>
       <div className="py-12 container mx-auto px-4 flex flex-col items-start">
         <GameGrid games={games} />
-        <SeeMoreBtn className="w-auto mt-12" />
+        {currentPage < totalPages && <SeeMoreBtn className="w-auto mt-12" />}
       </div>
     </>
   );
